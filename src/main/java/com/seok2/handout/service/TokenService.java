@@ -21,7 +21,7 @@ public class TokenService {
 
     public String create(String roomId, long handoutId, int expire) {
         String key = TokenProvider.create(roomId);
-        while(redisTemplate.hasKey(key)) {
+        while(Boolean.TRUE.equals(redisTemplate.hasKey(key))) {
             key = TokenProvider.create(roomId);
         }
         redisTemplate.opsForValue().set(
