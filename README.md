@@ -1,6 +1,6 @@
 # 카카오 뿌리기 API 구현
 
-##사용 환경
+## 사용 환경
 Spring Boot, Redis (embedded) , H2 , JPA
 
 ## API 명세
