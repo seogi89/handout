@@ -1,0 +1,4 @@
+GET http://localhost:8080/api/handouts
+X-USER-ID:1
+X-ROOM-ID:R101
+X-TOKEN-ID:UIh

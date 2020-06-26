@@ -17,6 +17,7 @@ public class HandoutService {
 
     private final HandoutRepository handoutRepository;
 
+    @Transactional
     public Handout issue(long userId, String roomId, CreateIssueRequestView view) {
         Handout issue = handoutRepository.save(Handout.issue(userId, roomId, view.getParticipants(), view.getAmount()));
         return findById(issue.getId());

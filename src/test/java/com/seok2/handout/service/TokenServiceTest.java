@@ -1,16 +1,11 @@
 package com.seok2.handout.service;
 
-import com.seok2.handout.configuration.RedisConfig;
 import com.seok2.handout.exception.TokenExpiredException;
 import com.seok2.handout.utils.TokenProvider;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.data.redis.DataRedisTest;
-import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,6 +33,5 @@ class TokenServiceTest {
         assertThatThrownBy(() -> tokenService.getAndParseByToken(TokenProvider.concat(roomId, token)))
                 .isInstanceOf(TokenExpiredException.class);
     }
-
 
 }

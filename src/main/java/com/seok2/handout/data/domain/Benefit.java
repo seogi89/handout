@@ -28,7 +28,7 @@ public class Benefit extends AbstractEntity {
     @Version
     private Long version;
 
-    public static Benefit of(Handout parent, int amount) {
+    protected static Benefit of(Handout parent, int amount) {
         Benefit benefit = new Benefit();
         benefit.handout = parent;
         benefit.amount = amount;

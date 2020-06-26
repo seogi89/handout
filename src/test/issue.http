@@ -1,0 +1,9 @@
+POST http://localhost:8080/api/handouts
+Content-Type: application/json
+X-USER-ID: 1
+X-ROOM-ID: R101
+
+{
+  "participants" : 2,
+  "amount": 1000
+}

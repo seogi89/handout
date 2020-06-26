@@ -11,7 +11,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
+
 //@TODO 커버리지 측정시 테스트 실패함 - 원인 분석 해야함.
+// 포트 충돌 이슈로 추측됨. 포트 변경 하였으나, 어플리케이션 동작중 여전히 테스트 케이스 실패함
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient(timeout = "100000")

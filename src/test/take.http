@@ -1,0 +1,4 @@
+POST http://localhost:8080/api/handouts/take
+X-USER-ID: 4
+X-ROOM-ID: R101
+X-TOKEN-ID:UIh

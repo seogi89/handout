@@ -3,8 +3,6 @@ package com.seok2.handout.data.domain;
 import com.seok2.handout.exception.DuplicateUserException;
 import com.seok2.handout.exception.NoBenefitLeftException;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
@@ -49,11 +47,10 @@ public class Benefits {
         return amounts;
     }
 
-    public static int nextInt(final int startInclusive, final int endExclusive) {
+    private static int nextInt(final int startInclusive, final int endExclusive) {
         if (startInclusive == endExclusive) {
             return startInclusive;
         }
-
         return startInclusive + RANDOM.nextInt(endExclusive - startInclusive);
     }
 
