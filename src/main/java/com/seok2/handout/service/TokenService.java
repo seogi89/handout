@@ -36,7 +36,7 @@ public class TokenService {
         return create(roomId, handoutId, TOKEN_EXPIRE_DATE);
     }
 
-    public Long findByToken(String token) {
+    public Long getAndParseByToken(String token) {
         String id = Optional.ofNullable(redisTemplate.opsForValue().get(token))
                 .orElseThrow(TokenExpiredException::new);
         return Long.valueOf(id);

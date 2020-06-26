@@ -22,9 +22,9 @@ public class HandoutIdHandlerMethodArgumentResolver implements HandlerMethodArgu
     }
 
     @Override
-    public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
+    public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
         String roomId = webRequest.getHeader("X-ROOM-ID");
         String tokenId = webRequest.getHeader("X-TOKEN-ID");
-        return tokenService.findByToken(TokenProvider.concat(roomId, tokenId));
+        return tokenService.getAndParseByToken(TokenProvider.concat(roomId, tokenId));
     }
 }
