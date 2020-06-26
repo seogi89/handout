@@ -42,7 +42,7 @@ public class Benefits {
     private static int[] breakUp(final int participants, int amount) {
         int[] amounts = new int[participants];
         for (int i = 0; i < participants - 1; i += 1) {
-            amounts[i] = nextInt(1, amount - ((participants - i - 1)));
+            amounts[i] = nextInt(1, amount - (participants - i - 1));
             amount -= amounts[i];
         }
         amounts[participants - 1] = amount;
