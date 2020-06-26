@@ -16,7 +16,7 @@ public final class BenefitResponseView {
     private LocalDateTime receiveTime;
     private long version;
 
-    private BenefitResponseView () {
+    private BenefitResponseView() {
 
     }
 

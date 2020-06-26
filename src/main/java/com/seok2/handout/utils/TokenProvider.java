@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 public final class TokenProvider {
 
-    private static final char [] TOKEN_CHARACTERS_POOL =
+    private static final char[] TOKEN_CHARACTERS_POOL =
             "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
     private static final Random RANDOM = new Random();
     private static final int KEY_SIZE = 3;

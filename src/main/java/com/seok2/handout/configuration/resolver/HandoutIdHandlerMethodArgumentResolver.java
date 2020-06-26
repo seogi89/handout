@@ -18,7 +18,7 @@ public class HandoutIdHandlerMethodArgumentResolver implements HandlerMethodArgu
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return  parameter.hasParameterAnnotation(HandoutId.class);
+        return parameter.hasParameterAnnotation(HandoutId.class);
     }
 
     @Override

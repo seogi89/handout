@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
         @UniqueConstraint(columnNames = {"handout_id", "user_id"})
 )
 @Entity
-public class Benefit extends AbstractEntity{
+public class Benefit extends AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

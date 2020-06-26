@@ -18,8 +18,9 @@ public final class CreateIssueRequestView {
     private int amount;
 
     public void validate() {
-        checkArgument(participants  >= 1 , "최소 참가 인원은 1명 입니다.");
-        checkArgument(amount  >= participants * 1 , "최소 금액은 " + participants * 1 + "원 입니다.");
+        checkArgument(participants >= 1, "최소 참가 인원은 1명 입니다.");
+        int minAmount = participants * 1;
+        checkArgument(amount >= minAmount, "최소 금액은 " + minAmount + "원 입니다.");
     }
 
 }

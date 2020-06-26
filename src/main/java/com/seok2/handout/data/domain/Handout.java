@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Entity
-public class Handout extends AbstractEntity{
+public class Handout extends AbstractEntity {
 
     public static final int HANDOUT_EXPIRED_MINUTE = 10;
     @Id
@@ -29,17 +29,17 @@ public class Handout extends AbstractEntity{
     }
 
     protected Benefit take(final long userId, final String roomId, LocalDateTime dateTime) {
-        if(!this.roomId.equals(roomId) || isOwner(userId)){
+        if (!this.roomId.equals(roomId) || isOwner(userId)) {
             throw new UnauthorizedAccessException();
         }
-        if(isExpired(dateTime)) {
+        if (isExpired(dateTime)) {
             throw new HandoutExpiredException();
         }
         return benefits.take(userId);
     }
 
     public Benefit take(final long userId, final String roomId) {
-        return take(userId,roomId,LocalDateTime.now());
+        return take(userId, roomId, LocalDateTime.now());
     }
 
     private boolean isExpired(LocalDateTime dateTime) {
