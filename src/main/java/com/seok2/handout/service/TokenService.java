@@ -12,6 +12,8 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class TokenService {
 
+    private static final int TOKEN_EXPIRE_DATE = 7 * 60 * 60 * 24;
+
     private final RedisTemplate<String, String> redisTemplate;
 
     public TokenService(RedisTemplate<String, String> redisTemplate) {
@@ -32,7 +34,7 @@ public class TokenService {
         return TokenProvider.parse(key);
     }
     public String create(String roomId, long handoutId) {
-        return create(roomId, handoutId,7 * 60 * 60 * 24);
+        return create(roomId, handoutId, TOKEN_EXPIRE_DATE);
     }
 
     public Long findByToken(String token) {
