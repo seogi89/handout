@@ -3,7 +3,6 @@ package com.seok2.handout.service;
 import com.seok2.handout.exception.TokenExpiredException;
 import com.seok2.handout.utils.TokenProvider;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
