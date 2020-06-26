@@ -27,7 +27,7 @@ class TokenServiceTest {
     public void create() {
         String roomId = "R101";
         String token = tokenService.create(roomId, 1);
-        assertThat(tokenService.findByToken(TokenProvider.concat(roomId, token))).isEqualTo(1);
+        assertThat(tokenService.getAndParseByToken(TokenProvider.concat(roomId, token))).isEqualTo(1);
     }
 
     @Test
@@ -35,7 +35,7 @@ class TokenServiceTest {
         String roomId = "R101";
         String token = tokenService.create(roomId, 1, 1);
         Thread.sleep(2000);
-        assertThatThrownBy(() -> tokenService.findByToken(TokenProvider.concat(roomId, token)))
+        assertThatThrownBy(() -> tokenService.getAndParseByToken(TokenProvider.concat(roomId, token)))
                 .isInstanceOf(TokenExpiredException.class);
     }
 
