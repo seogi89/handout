@@ -7,13 +7,11 @@ import java.util.stream.Stream;
 
 public final class TokenProvider {
 
-    private static final Random RANDOM = new Random();
-
     private static final char [] TOKEN_CHARACTERS_POOL =
             "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
+    private static final Random RANDOM = new Random();
     private static final int KEY_SIZE = 3;
     private static final String KEY_PREFIX = "handout:{0}:{1}";
-
 
     private TokenProvider() {
 
@@ -25,7 +23,7 @@ public final class TokenProvider {
 
     private static String generate() {
         return Stream.generate(() -> TOKEN_CHARACTERS_POOL[RANDOM.nextInt(TOKEN_CHARACTERS_POOL.length)])
-                .limit(3)
+                .limit(KEY_SIZE)
                 .map(String::valueOf)
                 .collect(Collectors.joining());
     }
