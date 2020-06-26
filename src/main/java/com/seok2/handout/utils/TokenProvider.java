@@ -29,7 +29,7 @@ public final class TokenProvider {
     }
 
     public static String parse(String key) {
-        return key.substring(key.lastIndexOf(":") + 1);
+        return key.substring(key.lastIndexOf(':') + 1);
     }
 
     public static String concat(String roomId, String token) {
