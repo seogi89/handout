@@ -2,12 +2,14 @@ package com.seok2.handout.service;
 
 import com.seok2.handout.exception.TokenExpiredException;
 import com.seok2.handout.utils.TokenProvider;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
+@RequiredArgsConstructor
 @Service
 public class TokenService {
 
@@ -15,11 +17,7 @@ public class TokenService {
 
     private final RedisTemplate<String, String> redisTemplate;
 
-    public TokenService(RedisTemplate<String, String> redisTemplate) {
-        this.redisTemplate = redisTemplate;
-    }
-
-    public String create(String roomId, long handoutId, int expire) {
+    protected String create(String roomId, long handoutId, int expire) {
         String key = TokenProvider.create(roomId);
         while (Boolean.TRUE.equals(redisTemplate.hasKey(key))) {
             key = TokenProvider.create(roomId);

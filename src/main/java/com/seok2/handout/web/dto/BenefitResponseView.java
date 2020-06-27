@@ -2,12 +2,14 @@ package com.seok2.handout.web.dto;
 
 import com.seok2.handout.data.domain.Benefit;
 import com.seok2.handout.data.domain.Benefits;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Builder
 @Getter
 public final class BenefitResponseView {
 
@@ -27,11 +29,10 @@ public final class BenefitResponseView {
     }
 
     private static BenefitResponseView of(Benefit benefit) {
-        BenefitResponseView brv = new BenefitResponseView();
-        brv.receiverId = benefit.getUserId();
-        brv.amount = benefit.getAmount();
-        brv.receiveTime = benefit.getReceivedAt();
-        brv.version = benefit.getVersion();
-        return brv;
+        return BenefitResponseView.builder()
+                .receiverId(benefit.getUserId())
+                .amount(benefit.getAmount())
+                .receiveTime(benefit.getReceivedAt())
+                .build();
     }
 }

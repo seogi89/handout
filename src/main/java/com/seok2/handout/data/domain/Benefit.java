@@ -1,12 +1,11 @@
 package com.seok2.handout.data.domain;
 
 import lombok.Getter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@ToString
+
 @Getter
 @Table(
         uniqueConstraints =

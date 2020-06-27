@@ -1,11 +1,13 @@
 package com.seok2.handout.web.dto;
 
 import com.seok2.handout.data.domain.Handout;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Builder
 @Getter
 public final class HandoutResponseView {
     private int amount;
@@ -18,11 +20,11 @@ public final class HandoutResponseView {
     }
 
     public static HandoutResponseView of(Handout issue) {
-        HandoutResponseView hrv = new HandoutResponseView();
-        hrv.amount = issue.getTotalHandoutAmount();
-        hrv.paidAmount = issue.getTotalPaidAmount();
-        hrv.createdAt = issue.getCreatedAt();
-        hrv.benefits = BenefitResponseView.ofList(issue.getBenefits());
-        return hrv;
+        return HandoutResponseView.builder()
+                .amount(issue.getTotalHandoutAmount())
+                .paidAmount(issue.getTotalPaidAmount())
+                .createdAt(issue.getCreatedAt())
+                .benefits(BenefitResponseView.ofList(issue.getBenefits()))
+                .build();
     }
 }

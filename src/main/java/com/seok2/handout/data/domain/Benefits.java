@@ -2,7 +2,6 @@ package com.seok2.handout.data.domain;
 
 import com.seok2.handout.exception.DuplicateUserException;
 import com.seok2.handout.exception.NoBenefitLeftException;
-import lombok.Getter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
@@ -15,7 +14,6 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Getter
 @Embeddable
 public class Benefits {
 
@@ -40,7 +38,7 @@ public class Benefits {
     private static int[] breakUp(final int participants, int amount) {
         int[] amounts = new int[participants];
         for (int i = 0; i < participants - 1; i += 1) {
-            amounts[i] = nextInt(1, amount - (participants - i - 1));
+            amounts[i] = nextInt(MINIMUM_PAID_AMOUNT, amount - (participants - i - 1));
             amount -= amounts[i];
         }
         amounts[participants - 1] = amount;
