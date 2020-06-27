@@ -9,5 +9,4 @@ public class NoBenefitLeftException extends RuntimeException {
     public NoBenefitLeftException() {
         super("남은 금액이 없습니다.");
     }
-
 }

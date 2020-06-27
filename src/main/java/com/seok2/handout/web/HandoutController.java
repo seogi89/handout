@@ -20,30 +20,36 @@ import javax.persistence.OptimisticLockException;
 @RestController
 @RequestMapping(HandoutController.HANDOUT_BASE)
 public class HandoutController {
+    
+    private static final String HEADER_X_USER_ID = "X-USER-ID";
+    private static final String HEADER_X_ROOM_ID = "X-ROOM-ID";
+    private static final String HEADER_X_TOKEN_ID = "X-TOKEN-ID";
 
     protected static final String HANDOUT_BASE = "api/handouts";
+
+
 
     private final HandoutService handoutService;
     private final TokenService tokenService;
 
     @PostMapping
     public ResponseEntity<Void> issue(
-            @RequestHeader("X-USER-ID") long userId,
-            @RequestHeader("X-ROOM-ID") String roomId,
+            @RequestHeader(HEADER_X_USER_ID) long userId,
+            @RequestHeader(HEADER_X_ROOM_ID) String roomId,
             @RequestBody CreateIssueRequestView view
     ) {
         view.validate();
         Handout handout = handoutService.issue(userId, roomId, view);
         String key = tokenService.create(roomId, handout.getId());
         return ResponseEntity.noContent()
-                .header("X-TOKEN-ID", TokenProvider.parse(key))
+                .header(HEADER_X_TOKEN_ID, TokenProvider.parse(key))
                 .build();
     }
 
     @PostMapping("/take")
     public ResponseEntity<Integer> take(
-            @RequestHeader("X-USER-ID") long userId,
-            @RequestHeader("X-ROOM-ID") String roomId,
+            @RequestHeader(HEADER_X_USER_ID) long userId,
+            @RequestHeader(HEADER_X_ROOM_ID) String roomId,
             @HandoutId long id) {
         return ResponseEntity.ok(doTake(userId, roomId, id).getAmount());
     }
@@ -60,7 +66,7 @@ public class HandoutController {
 
     @GetMapping
     public ResponseEntity<HandoutResponseView> show(
-            @RequestHeader("X-USER-ID") long userId,
+            @RequestHeader(HEADER_X_USER_ID) long userId,
             @HandoutId long id) {
         return ResponseEntity.ok(handoutService.show(id, userId));
     }
