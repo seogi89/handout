@@ -15,10 +15,6 @@ public final class HandoutResponseView {
     private LocalDateTime createdAt;
     private List<BenefitResponseView> benefits;
 
-    private HandoutResponseView() {
-
-    }
-
     public static HandoutResponseView of(Handout issue) {
         return HandoutResponseView.builder()
                 .amount(issue.getTotalHandoutAmount())

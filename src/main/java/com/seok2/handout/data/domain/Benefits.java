@@ -2,6 +2,7 @@ package com.seok2.handout.data.domain;
 
 import com.seok2.handout.exception.DuplicateUserException;
 import com.seok2.handout.exception.NoBenefitLeftException;
+import lombok.Getter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
@@ -14,6 +15,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Getter
 @Embeddable
 public class Benefits {
 
